@@ -6,3 +6,9 @@
 
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
+
+/reader.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/book/*
+  Cache-Control: public, max-age=86400
