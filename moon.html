@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>月亮与六便士 · 书库</title>
+<meta name="description" content="《月亮与六便士》中英双语在线阅读与下载：58 章全文、EPUB / TXT。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='36' fill='%23e8c96a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var w = window.innerWidth;
+  var ua = navigator.userAgent || '';
+  var mobile = w <= 768 || /Android|iPhone|iPad|iPod|Mobile|HarmonyOS/i.test(ua);
+  document.documentElement.setAttribute('data-device', mobile ? 'mobile' : 'desktop');
+})();
+</script>
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-soft:#f7f7fb;
+  --text:#101018;
+  --text-soft:#5a5f73;
+  --line:#e8e9f0;
+  --accent:#4f5ae0;
+  --accent-soft:#eef0ff;
+  --gold:#c9973a;
+  --gold-soft:#fdf6e6;
+  --radius:16px;
+  --maxw:1120px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sans:'Inter',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  --serif:'Noto Serif SC','Songti SC','SimSun',Georgia,serif;
+}
+html[data-theme="dark"]{
+  --bg:#0a0b13;
+  --bg-soft:#12131d;
+  --text:#f1f2f7;
+  --text-soft:#9aa0b4;
+  --line:#22242f;
+  --accent:#8f97ff;
+  --accent-soft:#171a2e;
+  --gold:#e3b25e;
+  --gold-soft:#1d1a10;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition:background .4s var(--ease),color .4s var(--ease);
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- Nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease),background .4s var(--ease);
+}
+header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;font-size:1.02rem;letter-spacing:.02em;display:flex;align-items:center;gap:8px;font-family:var(--serif)}
+.back-arrow{display:inline-block;transition:transform .3s var(--ease)}
+.logo:hover .back-arrow{transform:translateX(-4px)}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft);animation:pulse 2.6s var(--ease) infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:.9rem;color:var(--text-soft);font-weight:500;position:relative;transition:color .25s var(--ease)}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1.5px;background:var(--accent);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:10px}
+.icon-btn{
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+  background:transparent;color:var(--text);cursor:pointer;
+  display:grid;place-items:center;font-size:15px;
+  transition:transform .3s var(--ease),border-color .3s var(--ease);
+}
+button.icon-btn:hover{transform:rotate(35deg);border-color:var(--accent)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:36px;height:36px;color:var(--text);font-size:1.1rem;cursor:pointer}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 26px;border-radius:999px;font-size:.92rem;font-weight:500;
+  cursor:pointer;border:1px solid transparent;font-family:var(--sans);
+  transition:transform .28s var(--ease),box-shadow .28s var(--ease),background .28s var(--ease),border-color .28s var(--ease),color .28s var(--ease);
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px -8px var(--accent)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+
+/* ---------- Hero ---------- */
+.hero{min-height:92svh;display:flex;flex-direction:column;justify-content:center;padding:130px 0 80px;position:relative}
+.hero::before{
+  content:'';position:absolute;top:-6%;right:-4%;width:640px;height:640px;
+  background:radial-gradient(circle,var(--accent-soft) 0%,transparent 68%);
+  filter:blur(30px);z-index:-1;pointer-events:none;
+  animation:floatBg 14s ease-in-out infinite;
+}
+@keyframes floatBg{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,40px)}}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.15;letter-spacing:.02em;font-weight:700;margin-bottom:12px;font-family:var(--serif)}
+.en-title{font-family:var(--serif);letter-spacing:.2em;text-transform:uppercase;font-size:.76rem;color:var(--text-soft);margin-bottom:22px}
+.lead{font-size:clamp(1rem,1.8vw,1.1rem);color:var(--text-soft);max-width:540px;margin-bottom:26px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.chips span{
+  font-size:.8rem;color:var(--text-soft);border:1px solid var(--line);
+  padding:5px 14px;border-radius:999px;background:var(--bg-soft);
+  transition:border-color .3s var(--ease),color .3s var(--ease);
+}
+.chips span:hover{border-color:var(--accent);color:var(--accent)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- Cover (CSS art) ---------- */
+.cover-stage{display:flex;justify-content:center;perspective:1400px}
+.cover-float{animation:coverFloat 7s ease-in-out infinite}
+@keyframes coverFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.book{
+  position:relative;width:min(320px,72vw);aspect-ratio:2/3;
+  border-radius:5px 18px 18px 5px;
+  background:linear-gradient(155deg,#161c3e 0%,#0d1128 55%,#0a0d1e 100%);
+  box-shadow:0 40px 80px -30px rgba(10,12,30,.55),0 0 200px rgba(79,90,224,.08);
+  overflow:hidden;
+  transform:rotateY(-5deg);
+  transition:transform .6s var(--ease),box-shadow .6s var(--ease);
+}
+.cover-stage:hover .book{transform:rotateY(-1deg) scale(1.015);box-shadow:0 50px 90px -30px rgba(10,12,30,.6),0 0 220px rgba(79,90,224,.14)}
+.book::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:16px;z-index:2;
+  background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,0) 90%);
+}
+.b-stars{position:absolute;inset:0;
+  background-image:
+    radial-gradient(1.6px 1.6px at 14% 16%,rgba(255,255,255,.85),transparent),
+    radial-gradient(1.4px 1.4px at 78% 10%,rgba(255,255,255,.7),transparent),
+    radial-gradient(1.8px 1.8px at 62% 24%,rgba(255,255,255,.6),transparent),
+    radial-gradient(1.3px 1.3px at 26% 34%,rgba(255,255,255,.55),transparent),
+    radial-gradient(1.5px 1.5px at 88% 40%,rgba(255,255,255,.6),transparent),
+    radial-gradient(1.2px 1.2px at 8% 52%,rgba(255,255,255,.5),transparent),
+    radial-gradient(1.6px 1.6px at 44% 8%,rgba(255,255,255,.65),transparent);
+}
+.b-moon{
+  position:absolute;top:11%;left:50%;transform:translateX(-50%);
+  width:44%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#fdf7e6,#f2e6c2 55%,#ddc996 100%);
+  box-shadow:0 0 60px 12px rgba(245,234,208,.35),0 0 120px 40px rgba(245,234,208,.14);
+}
+.b-title{position:absolute;bottom:22%;left:0;right:0;text-align:center;color:#f2ead2;font-family:var(--serif)}
+.b-title .b-cn{display:block;font-size:1.42rem;letter-spacing:.12em;line-height:1.5}
+.b-title em{display:block;font-style:normal;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(242,234,210,.5);margin-top:12px}
+.b-title .b-by{margin-top:6px;font-size:.66rem;letter-spacing:.2em;color:rgba(242,234,210,.62)}
+.b-shine{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.09) 46%,transparent 62%);
+  transform:translateX(-130%);transition:transform .9s var(--ease);
+}
+.cover-stage:hover .b-shine{transform:translateX(130%)}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Sections ---------- */
+section{padding:96px 0}
+.sec-head{margin-bottom:52px;max-width:640px}
+.sec-tag{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:.01em;line-height:1.25;font-weight:700;margin-bottom:14px;font-family:var(--serif)}
+.sec-head p{color:var(--text-soft);font-size:1rem}
+
+.prose{max-width:760px}
+.prose p{color:var(--text-soft);font-size:1.02rem;margin-bottom:22px}
+.prose p:first-child::first-letter{font-family:var(--serif);font-size:1.6em;color:var(--text);float:left;line-height:1;padding:6px 10px 0 0}
+.pull{
+  font-family:var(--serif);font-size:clamp(1.3rem,2.8vw,1.8rem);
+  text-align:center;margin:70px auto 0;max-width:660px;
+  padding:38px 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  letter-spacing:.03em;
+}
+.pull .gold{color:var(--gold)}
+
+/* ---------- Author ---------- */
+.author-card{
+  display:flex;gap:34px;align-items:flex-start;
+  padding:40px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--bg-soft);
+  transition:border-color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease);
+}
+.author-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));box-shadow:0 20px 44px -24px rgba(0,0,0,.2)}
+.author-avatar{
+  flex:none;width:86px;height:86px;border-radius:50%;
+  display:grid;place-items:center;font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#f2ead2;
+  background:radial-gradient(circle at 35% 30%,#2a3158,#141a3a 70%);
+  box-shadow:0 0 0 6px var(--accent-soft),0 0 34px rgba(79,90,224,.25);
+}
+.author-info h3{font-size:1.25rem;margin-bottom:4px;font-family:var(--serif)}
+.author-en{color:var(--text-soft);font-size:.85rem;letter-spacing:.06em;margin-bottom:14px}
+.author-info p{color:var(--text-soft);font-size:.95rem;margin-bottom:16px}
+.chips.small span{font-size:.76rem;padding:4px 12px}
+
+/* ---------- Quotes ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.quote-card{
+  padding:34px 30px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--bg-soft);
+  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+  display:flex;flex-direction:column;gap:16px;
+}
+.quote-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--gold) 45%,var(--line));box-shadow:0 20px 40px -22px rgba(0,0,0,.18)}
+.quote-cn{
+  font-family:var(--serif);font-size:1.02rem;line-height:1.9;color:var(--text);
+  border-left:3px solid var(--gold);padding-left:18px;
+}
+.quote-en{color:var(--text-soft);font-size:.82rem;line-height:1.75;font-style:italic;padding-left:21px}
+
+/* ---------- Download ---------- */
+.dl-card{
+  padding:36px 32px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--bg-soft);
+  display:flex;flex-direction:column;gap:12px;
+  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+  position:relative;overflow:hidden;
+}
+.dl-card::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(135deg,var(--accent-soft),transparent 60%);
+  opacity:0;transition:opacity .4s var(--ease);pointer-events:none;
+}
+.dl-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:0 20px 40px -22px rgba(0,0,0,.18)}
+.dl-card:hover::after{opacity:1}
+.dl-card>*{position:relative;z-index:1}
+.dl-card .icon{
+  width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+  background:var(--accent-soft);color:var(--accent);font-size:1.25rem;margin-bottom:8px;
+  transition:transform .4s var(--ease);
+}
+.dl-card:hover .icon{transform:scale(1.1) rotate(-6deg)}
+.dl-card h3{font-size:1.08rem;font-weight:600;letter-spacing:-.01em}
+.dl-card p{color:var(--text-soft);font-size:.92rem}
+.dl-meta{font-size:.8rem!important;color:var(--gold)!important;font-weight:600;letter-spacing:.04em}
+.dl-card .btn{margin-top:14px;width:fit-content}
+.links-row{
+  display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+  margin-top:30px;color:var(--text-soft);font-size:.9rem;
+}
+.links-row a{color:var(--accent);border-bottom:1px dashed color-mix(in srgb,var(--accent) 45%,transparent);padding-bottom:1px;transition:border-color .3s var(--ease)}
+.links-row a:hover{border-bottom-style:solid}
+.dl-note{color:var(--text-soft);font-size:.82rem;margin-top:20px;max-width:760px}
+
+/* ---------- Footer ---------- */
+footer{padding:44px 0 56px;border-top:1px solid var(--line);color:var(--text-soft);font-size:.84rem}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot a{transition:color .25s var(--ease)}
+.foot a:hover{color:var(--accent)}
+
+/* ---------- Device: mobile ---------- */
+[data-device="mobile"] .hero{padding:112px 0 56px;min-height:auto}
+[data-device="mobile"] .hero-grid{grid-template-columns:1fr;gap:44px}
+[data-device="mobile"] .hero-cover{order:-1}
+[data-device="mobile"] .book{width:min(210px,58vw)}
+[data-device="mobile"] h1{font-size:clamp(1.9rem,8vw,2.5rem)}
+[data-device="mobile"] section{padding:64px 0}
+[data-device="mobile"] .sec-head{margin-bottom:36px}
+[data-device="mobile"] .author-card{flex-direction:column;gap:22px;padding:30px 24px}
+[data-device="mobile"] .prose p{font-size:.98rem}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:820px){
+  .nav-links{
+    position:fixed;top:64px;left:0;right:0;
+    flex-direction:column;gap:0;align-items:stretch;
+    background:var(--bg);border-bottom:1px solid var(--line);
+    padding:0 24px;max-height:0;overflow:hidden;
+    transition:max-height .45s var(--ease),padding .45s var(--ease);
+  }
+  .nav-links.open{max-height:360px;padding:12px 24px 20px}
+  .nav-links a{padding:12px 0;font-size:1rem}
+  .nav-links a::after{display:none}
+  .menu-btn{display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="logo"><span class="back-arrow">←</span><span class="dot"></span>书库</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#story">简介</a>
+      <a href="#author">作者</a>
+      <a href="#quotes">摘录</a>
+      <a href="#download">下载</a>
+    </nav>
+    <div class="nav-right">
+      <a href="reader.html#zh-1" class="btn btn-primary" style="padding:9px 20px;font-size:.85rem">开始阅读</a>
+      <button class="icon-btn" id="themeBtn" aria-label="切换主题">◐</button>
+      <button class="menu-btn" id="menuBtn" aria-label="菜单">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1 class="reveal">月亮与六便士</h1>
+        <p class="en-title reveal">The Moon and Sixpence · W. Somerset Maugham</p>
+        <p class="lead reveal">伦敦证券经纪人斯特里克兰德，四十岁那年抛下一切去画画——所有人以为他疯了，他却在贫病与偏执中，把生命烧成了天才的火焰。</p>
+        <div class="chips reveal">
+          <span>58 章</span>
+          <span>中英双语</span>
+          <span>免费全文</span>
+          <span>EPUB / TXT</span>
+        </div>
+        <div class="hero-actions reveal">
+          <a href="reader.html#zh-1" class="btn btn-primary">开始阅读 <span class="arrow">→</span></a>
+          <a href="#download" class="btn btn-ghost">下载本书 ↓</a>
+        </div>
+      </div>
+      <div class="hero-cover reveal">
+        <div class="cover-stage">
+          <div class="cover-float">
+            <div class="book">
+              <div class="b-stars"></div>
+              <div class="b-moon"></div>
+              <div class="b-title">
+                <span class="b-cn">月亮与六便士</span>
+                <em>The Moon and Sixpence</em>
+                <em class="b-by">毛姆 著</em>
+              </div>
+              <div class="b-shine"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section id="story" class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Story</span>
+      <h2>内容简介</h2>
+      <p>一个被梦想击中的人，和他身后那个世俗世界。</p>
+    </div>
+    <div class="prose reveal">
+      <p>伦敦证券经纪人查尔斯·斯特里克兰德，年过四十，家庭美满、生活体面。某天，他毫无征兆地抛下妻子儿女，只留下一封信，独自去了巴黎——所有人都以为他有了外遇。真相却令人错愕：他只想画画。</p>
+      <p>从此，他潦倒、粗鲁、冷酷，对一切人情世故不屑一顾。他辗转巴黎、马赛，最终流落南太平洋的塔希提岛，在贫病与偏执中燃烧生命，画下他眼中那个狂热而壮丽的世界。而他的名字，要到他死后许多年，才被世人奉为天才。</p>
+      <p>小说以画家保罗·高更的生平为蓝本，借「我」的眼睛旁观了一场惊世骇俗的人生实验：一个人追逐头顶的月亮，代价是踩碎脚下所有的六便士。</p>
+    </div>
+    <blockquote class="pull reveal">满地都是六便士，<span class="gold">他却抬头看见了月亮。</span></blockquote>
+  </section>
+
+  <!-- Author -->
+  <section id="author" class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Author</span>
+      <h2>关于作者</h2>
+    </div>
+    <div class="author-card reveal">
+      <div class="author-avatar">WM</div>
+      <div class="author-info">
+        <h3>威廉·萨默塞特·毛姆</h3>
+        <p class="author-en">W. Somerset Maugham · 1874 — 1965</p>
+        <p>英国小说家、剧作家，20 世纪读者最多的作家之一。他做过医生、当过间谍、游历过整个南太平洋。1916 年，他在塔希提岛听闻画家高更的往事，三年后写下《月亮与六便士》，一举奠定其小说家的世界声誉。</p>
+        <div class="chips small">
+          <span>《人生的枷锁》</span>
+          <span>《刀锋》</span>
+          <span>《面纱》</span>
+          <span>《寻欢作乐》</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quotes -->
+  <section id="quotes" class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Quotes</span>
+      <h2>精彩摘录</h2>
+      <p>三句原文，与你共赏。</p>
+    </div>
+    <div class="grid">
+      <figure class="quote-card reveal">
+        <blockquote class="quote-cn">苦难并不会使人高贵——幸福有时倒能；而苦难，多半只会让人变得狭隘、记仇。</blockquote>
+        <p class="quote-en">“It is not true that suffering ennobles the character; happiness does that sometimes, but suffering, for the most part, makes men petty and vindictive.”</p>
+      </figure>
+      <figure class="quote-card reveal">
+        <blockquote class="quote-cn">我总觉得，有些人生来就错置了地方。命运把他们抛进某种环境，他们却始终怀念着一个自己也不知道在哪里的故乡。</blockquote>
+        <p class="quote-en">“I have an idea that some men are born out of their due place. Accident has cast them amid certain surroundings, but they have always a nostalgia for a home they know not.”</p>
+      </figure>
+      <figure class="quote-card reveal">
+        <blockquote class="quote-cn">你凭什么认为，世界上最珍贵的美，会像沙滩上的一颗石子，等着漫不经心的路人随手捡起？</blockquote>
+        <p class="quote-en">“Why should you think that beauty, which is the most precious thing in the world, lies like a stone on the beach for the careless passer-by to pick up idly?”</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download" class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Download</span>
+      <h2>下载与链接</h2>
+      <p>三种文件，任选其一；全部免费，无注册、无广告。</p>
+    </div>
+    <div class="grid">
+      <div class="dl-card reveal">
+        <div class="icon">◈</div>
+        <h3>EPUB · 中文版</h3>
+        <p>中文全文，带封面与完整章节目录，适配手机、Kindle 等主流阅读器。</p>
+        <p class="dl-meta">58 章 · 带封面</p>
+        <a class="btn btn-primary" href="./book/moon-zh.epub" download="moon-zh.epub">下载中文 EPUB <span class="arrow">↓</span></a>
+      </div>
+      <div class="dl-card reveal">
+        <div class="icon">◇</div>
+        <h3>EPUB · 英文原版</h3>
+        <p>The Moon and Sixpence 英文全文，带封面与章节目录。</p>
+        <p class="dl-meta">约 283 KB · 英文</p>
+        <a class="btn btn-ghost" href="./book/moon-and-sixpence.epub" download="moon-and-sixpence.epub">下载英文 EPUB <span class="arrow">↓</span></a>
+      </div>
+      <div class="dl-card reveal">
+        <div class="icon">▤</div>
+        <h3>TXT · 英文全文</h3>
+        <p>纯文本，含 Project Gutenberg 版权信息，适合任意设备与二次处理。</p>
+        <p class="dl-meta">约 431 KB · 英文</p>
+        <a class="btn btn-ghost" href="./book/moon-and-sixpence.txt" download="moon-and-sixpence.txt">下载 TXT <span class="arrow">↓</span></a>
+      </div>
+    </div>
+    <div class="links-row reveal">
+      <span>在线阅读：</span>
+      <a href="reader.html#zh-1">中文版</a>
+      <a href="reader.html#en-1">English</a>
+      <a href="https://www.gutenberg.org/ebooks/222" target="_blank" rel="noopener">文本来源</a>
+      <a href="https://github.com/Youran-yz/youran" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p class="dl-note reveal">中文译文由 AI 翻译整理，仅供学习参考；英文原文属公有领域（Project Gutenberg eBook #222）。</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 书库 · 仅供学习交流</span>
+    <a href="index.html">← 返回书库</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const hdr = document.getElementById('hdr');
+  const navLinks = document.getElementById('navLinks');
+  const menuBtn = document.getElementById('menuBtn');
+  const themeBtn = document.getElementById('themeBtn');
+
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.textContent = open ? '✕' : '☰';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.textContent = '☰';
+  }));
+
+  const saved = localStorage.getItem('moon-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const setTheme = t => {
+    document.documentElement.dataset.theme = t;
+    themeBtn.textContent = t === 'dark' ? '☀' : '◐';
+    localStorage.setItem('moon-theme', t);
+  };
+  setTheme(saved || (prefersDark ? 'dark' : 'light'));
+  themeBtn.addEventListener('click', () => {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 70);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(el => io.observe(el));
+  } else {
+    items.forEach(el => el.classList.add('in'));
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

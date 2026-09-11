@@ -2,13 +2,21 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>月亮与六便士 · 在线阅读与下载</title>
-<meta name="description" content="毛姆《月亮与六便士》在线免费阅读与下载：58 章全文、EPUB / TXT 下载，简洁干净的阅读体验。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>书库 · 在线阅读</title>
+<meta name="description" content="一间小小的书库：《月亮与六便士》（中英双语全文）、《活着》（简介与摘录）。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='36' fill='%23e8c96a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var w = window.innerWidth;
+  var ua = navigator.userAgent || '';
+  var mobile = w <= 768 || /Android|iPhone|iPad|iPod|Mobile|HarmonyOS/i.test(ua);
+  document.documentElement.setAttribute('data-device', mobile ? 'mobile' : 'desktop');
+})();
+</script>
 <style>
 :root{
   --bg:#ffffff;
@@ -21,7 +29,7 @@
   --gold:#c9973a;
   --gold-soft:#fdf6e6;
   --radius:16px;
-  --maxw:1120px;
+  --maxw:1040px;
   --ease:cubic-bezier(.22,1,.36,1);
   --sans:'Inter',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
   --serif:'Noto Serif SC','Songti SC','SimSun',Georgia,serif;
@@ -51,7 +59,7 @@ body{
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-/* ---------- Nav ---------- */
+/* ---------- Header ---------- */
 header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   backdrop-filter:saturate(180%) blur(16px);
@@ -61,268 +69,190 @@ header{
   transition:border-color .3s var(--ease),background .4s var(--ease);
 }
 header.scrolled{border-bottom-color:var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{font-weight:700;font-size:1.02rem;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;font-family:var(--serif)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;font-size:1.02rem;letter-spacing:.02em;display:flex;align-items:center;gap:9px;font-family:var(--serif)}
 .logo .dot{
   width:10px;height:10px;border-radius:50%;background:var(--gold);
   box-shadow:0 0 0 4px var(--gold-soft);
   animation:pulse 2.6s var(--ease) infinite;
 }
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
-.nav-links{display:flex;gap:30px;align-items:center}
-.nav-links a{
-  font-size:.9rem;color:var(--text-soft);font-weight:500;
-  position:relative;transition:color .25s var(--ease);
-}
-.nav-links a::after{
-  content:'';position:absolute;left:0;bottom:-5px;width:0;height:1.5px;
-  background:var(--accent);transition:width .3s var(--ease);
-}
-.nav-links a:hover{color:var(--text)}
-.nav-links a:hover::after{width:100%}
-.nav-right{display:flex;align-items:center;gap:12px}
-.theme-btn{
+.nav-right{display:flex;align-items:center;gap:10px}
+.icon-btn{
   width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
   background:transparent;color:var(--text);cursor:pointer;
   display:grid;place-items:center;font-size:15px;
   transition:transform .3s var(--ease),border-color .3s var(--ease);
 }
-.theme-btn:hover{transform:rotate(35deg);border-color:var(--accent)}
-.menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
-
-/* ---------- Buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:13px 26px;border-radius:999px;font-size:.92rem;font-weight:500;
-  cursor:pointer;border:1px solid transparent;font-family:var(--sans);
-  transition:transform .28s var(--ease),box-shadow .28s var(--ease),background .28s var(--ease),border-color .28s var(--ease),color .28s var(--ease);
-  will-change:transform;
-}
-.btn:active{transform:scale(.97)}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px -8px var(--accent)}
-.btn-ghost{border-color:var(--line);color:var(--text);background:transparent}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-.btn.small{padding:9px 20px;font-size:.85rem}
-.btn.big{padding:16px 36px;font-size:1rem}
-.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
-.arrow{transition:transform .3s var(--ease)}
-.btn:hover .arrow{transform:translateX(4px)}
+button.icon-btn:hover{transform:rotate(35deg);border-color:var(--accent)}
+a.icon-btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+a.icon-btn svg{width:17px;height:17px;fill:currentColor}
 
 /* ---------- Hero ---------- */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:130px 0 90px;position:relative}
-.hero::before{
-  content:'';position:absolute;top:-8%;right:-6%;width:660px;height:660px;
-  background:radial-gradient(circle,var(--accent-soft) 0%,transparent 68%);
+.lib-hero{
+  text-align:center;
+  padding:158px 24px 78px;
+  position:relative;
+}
+.lib-hero::before{
+  content:'';position:absolute;top:-14%;left:50%;transform:translateX(-50%);
+  width:680px;height:520px;
+  background:radial-gradient(ellipse,var(--accent-soft) 0%,transparent 68%);
   filter:blur(30px);z-index:-1;pointer-events:none;
   animation:floatBg 14s ease-in-out infinite;
 }
-@keyframes floatBg{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,40px)}}
-.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center}
-.badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 16px;border-radius:999px;
-  background:var(--gold-soft);color:var(--gold);
-  font-size:.8rem;font-weight:600;letter-spacing:.02em;
-  margin-bottom:26px;width:fit-content;
+@keyframes floatBg{0%,100%{transform:translate(-50%,0)}50%{transform:translate(calc(-50% + 30px),26px)}}
+.lib-hero h1{
+  font-family:var(--serif);
+  font-size:clamp(2.6rem,7vw,4rem);
+  letter-spacing:.1em;
+  font-weight:700;
+  line-height:1.2;
 }
-h1{font-size:clamp(2.5rem,6vw,4.2rem);line-height:1.12;letter-spacing:-.02em;font-weight:700;margin-bottom:10px;font-family:var(--serif)}
-.en-title{font-family:var(--serif);letter-spacing:.26em;text-transform:uppercase;font-size:.8rem;color:var(--text-soft);margin-bottom:24px}
-.lead{font-size:clamp(1rem,1.8vw,1.12rem);color:var(--text-soft);max-width:540px;margin-bottom:28px;font-weight:400}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
-.chips span{
-  font-size:.8rem;color:var(--text-soft);border:1px solid var(--line);
-  padding:5px 14px;border-radius:999px;background:var(--bg-soft);
-  transition:border-color .3s var(--ease),color .3s var(--ease);
+.lib-sub{color:var(--text-soft);margin-top:16px;font-size:1.02rem;letter-spacing:.04em}
+.lib-meta{
+  margin-top:26px;font-size:.78rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--text-soft);
 }
-.chips span:hover{border-color:var(--accent);color:var(--accent)}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.lib-meta b{color:var(--gold);font-weight:600}
 
-/* ---------- Book cover (CSS art) ---------- */
-.cover-stage{display:flex;justify-content:center;perspective:1400px}
-.cover-float{animation:coverFloat 7s ease-in-out infinite}
-@keyframes coverFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.book{
-  position:relative;width:min(330px,76vw);aspect-ratio:2/3;
-  border-radius:5px 18px 18px 5px;
-  background:linear-gradient(155deg,#161c3e 0%,#0d1128 55%,#0a0d1e 100%);
-  box-shadow:0 40px 80px -30px rgba(10,12,30,.55),0 0 200px rgba(79,90,224,.08);
-  overflow:hidden;
-  transform:rotateY(-5deg);
-  transition:transform .6s var(--ease),box-shadow .6s var(--ease);
+/* ---------- Book grid ---------- */
+.library{padding:20px 24px 40px}
+.book-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:56px 44px;
+  max-width:820px;
+  margin:0 auto;
 }
-.cover-stage:hover .book{transform:rotateY(-1deg) scale(1.015);box-shadow:0 50px 90px -30px rgba(10,12,30,.6),0 0 220px rgba(79,90,224,.14)}
-.book::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:16px;z-index:2;
-  background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,0) 90%);
+.book-card{
+  display:flex;flex-direction:column;align-items:center;
+  gap:24px;text-align:center;
+  cursor:pointer;
 }
-.b-stars{position:absolute;inset:0;
-  background-image:
-    radial-gradient(1.6px 1.6px at 14% 16%,rgba(255,255,255,.85),transparent),
-    radial-gradient(1.4px 1.4px at 78% 10%,rgba(255,255,255,.7),transparent),
-    radial-gradient(1.8px 1.8px at 62% 24%,rgba(255,255,255,.6),transparent),
-    radial-gradient(1.3px 1.3px at 26% 34%,rgba(255,255,255,.55),transparent),
-    radial-gradient(1.5px 1.5px at 88% 40%,rgba(255,255,255,.6),transparent),
-    radial-gradient(1.2px 1.2px at 8% 52%,rgba(255,255,255,.5),transparent),
-    radial-gradient(1.6px 1.6px at 44% 8%,rgba(255,255,255,.65),transparent),
-    radial-gradient(1.2px 1.2px at 92% 62%,rgba(255,255,255,.4),transparent);
+.bc-cover{
+  position:relative;overflow:hidden;
+  width:100%;max-width:280px;
+  aspect-ratio:2/3;border-radius:6px 14px 14px 6px;
+  container-type:inline-size;
+  box-shadow:0 26px 50px -24px rgba(10,12,30,.5);
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease);
 }
-.b-moon{
-  position:absolute;top:11%;left:50%;transform:translateX(-50%);
-  width:46%;aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle at 38% 32%,#fdf7e6,#f2e6c2 55%,#ddc996 100%);
-  box-shadow:0 0 60px 12px rgba(245,234,208,.35),0 0 120px 40px rgba(245,234,208,.14);
+.book-card:hover .bc-cover{
+  transform:translateY(-8px) rotate(-.6deg);
+  box-shadow:0 36px 64px -26px rgba(10,12,30,.6);
 }
-.b-coin{
-  position:absolute;bottom:8.5%;left:50%;transform:translateX(-50%);
-  width:30px;height:30px;border-radius:50%;
-  background:radial-gradient(circle at 35% 35%,#ffd97d,#d6a63f 60%,#a87e2a);
-  box-shadow:0 0 18px 4px rgba(214,166,63,.35);
-  opacity:.9;
-}
-.b-title{position:absolute;bottom:21%;left:0;right:0;text-align:center;color:#f2ead2;font-family:var(--serif)}
-.b-title span{display:block;font-size:1.3rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.6}
-.b-title em{display:block;margin-top:12px;font-style:normal;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,234,210,.55)}
-.b-shine{
-  position:absolute;inset:0;z-index:3;pointer-events:none;
-  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.09) 46%,transparent 62%);
+.bc-shine{
+  position:absolute;inset:0;z-index:4;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.1) 46%,transparent 62%);
   transform:translateX(-130%);transition:transform .9s var(--ease);
 }
-.cover-stage:hover .b-shine{transform:translateX(130%)}
+.book-card:hover .bc-shine{transform:translateX(130%)}
+.bc-title{
+  position:absolute;left:0;right:0;text-align:center;
+  color:#f2ead2;font-family:var(--serif);font-weight:600;
+  letter-spacing:.1em;line-height:1.4;
+}
+.bc-author{
+  position:absolute;left:0;right:0;text-align:center;
+  color:rgba(242,234,210,.62);font-family:var(--serif);
+  letter-spacing:.34em;text-indent:.34em;
+}
 
-/* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.reveal.in{opacity:1;transform:none}
+/* moon cover */
+.bc-cover.moon{background:linear-gradient(155deg,#161c3e 0%,#0d1128 55%,#0a0d1e 100%)}
+.bc-cover.moon::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:12px;z-index:2;
+  background:linear-gradient(90deg,rgba(255,255,255,.13),rgba(255,255,255,0));
+}
+.bc-stars{position:absolute;inset:0;
+  background-image:
+    radial-gradient(1.6px 1.6px at 16% 14%,rgba(255,255,255,.85),transparent),
+    radial-gradient(1.3px 1.3px at 76% 9%,rgba(255,255,255,.7),transparent),
+    radial-gradient(1.7px 1.7px at 64% 26%,rgba(255,255,255,.6),transparent),
+    radial-gradient(1.2px 1.2px at 24% 36%,rgba(255,255,255,.5),transparent),
+    radial-gradient(1.5px 1.5px at 86% 44%,rgba(255,255,255,.55),transparent),
+    radial-gradient(1.2px 1.2px at 10% 56%,rgba(255,255,255,.45),transparent),
+    radial-gradient(1.5px 1.5px at 42% 7%,rgba(255,255,255,.6),transparent);
+}
+.bc-moon{
+  position:absolute;top:10%;left:50%;transform:translateX(-50%);
+  width:40cqw;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#fdf7e6,#f2e6c2 55%,#ddc996 100%);
+  box-shadow:0 0 46px 10px rgba(245,234,208,.3),0 0 90px 30px rgba(245,234,208,.12);
+}
+.bc-cover.moon .bc-title{bottom:31%;font-size:38px;font-size:12.5cqw}
+.bc-cover.moon .bc-author{bottom:22%;font-size:12px;font-size:4.1cqw}
 
-/* ---------- Sections ---------- */
-section{padding:100px 0}
-.sec-head{margin-bottom:56px;max-width:640px}
-.sec-tag{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
-h2{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;line-height:1.25;font-weight:700;margin-bottom:14px;font-family:var(--serif)}
-.sec-head p{color:var(--text-soft);font-size:1rem}
+/* huozhe cover */
+.bc-cover.hz{background:linear-gradient(168deg,#2b0a0a 0%,#571410 52%,#7d2418 100%)}
+.bc-cover.hz::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:12px;z-index:2;
+  background:linear-gradient(90deg,rgba(255,235,210,.14),rgba(255,235,210,0));
+}
+.hz-frame{
+  position:absolute;inset:5.5%;z-index:3;
+  border:1px solid rgba(255,235,210,.22);border-radius:2px;
+}
+.hz-sun{
+  position:absolute;top:11%;left:50%;transform:translateX(-50%);
+  width:50cqw;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 40% 34%,#ffd98d,#e8843f 58%,#b84a24);
+  box-shadow:0 0 56px 14px rgba(232,132,63,.34);
+}
+.bc-cover.hz .bc-title{bottom:33%;font-size:60px;font-size:20cqw;letter-spacing:.16em}
+.bc-cover.hz .bc-author{bottom:23%;font-size:12px;font-size:4cqw}
 
-/* ---------- Stats ---------- */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;padding:44px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat b{display:block;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;font-family:var(--serif)}
-.stat span{color:var(--text-soft);font-size:.86rem}
-
-/* ---------- Prose ---------- */
-.prose{max-width:760px}
-.prose p{color:var(--text-soft);font-size:1.02rem;margin-bottom:22px}
-.prose p:first-child::first-letter{font-family:var(--serif);font-size:1.6em;color:var(--text);float:left;line-height:1;padding:6px 10px 0 0}
-.pull{
-  font-family:var(--serif);font-size:clamp(1.3rem,2.8vw,1.8rem);
-  text-align:center;margin:72px auto 0;max-width:660px;
-  padding:38px 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  letter-spacing:.03em;
+/* info */
+.bc-info h2{
+  font-family:var(--serif);font-size:1.32rem;font-weight:700;
+  letter-spacing:.04em;margin-bottom:8px;
+  transition:color .3s var(--ease);
 }
-.pull .gold{color:var(--gold)}
-
-/* ---------- Author ---------- */
-.author-card{
-  display:flex;gap:34px;align-items:flex-start;
-  padding:40px;border-radius:var(--radius);
-  border:1px solid var(--line);background:var(--bg-soft);
-  transition:border-color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease);
+.book-card:hover .bc-info h2{color:var(--accent)}
+.bc-line{color:var(--text-soft);font-size:.84rem;letter-spacing:.02em;margin-bottom:10px}
+.bc-desc{color:var(--text-soft);font-size:.9rem;margin-bottom:16px}
+.bc-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.bc-tags span{
+  font-size:.74rem;color:var(--text-soft);
+  border:1px solid var(--line);border-radius:999px;
+  padding:3px 12px;background:var(--bg-soft);
+  transition:border-color .3s var(--ease),color .3s var(--ease);
 }
-.author-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line));box-shadow:0 20px 44px -24px rgba(0,0,0,.2)}
-.author-avatar{
-  flex:none;width:86px;height:86px;border-radius:50%;
-  display:grid;place-items:center;font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#f2ead2;
-  background:radial-gradient(circle at 35% 30%,#2a3158,#141a3a 70%);
-  box-shadow:0 0 0 6px var(--accent-soft),0 0 34px rgba(79,90,224,.25);
-}
-.author-info h3{font-size:1.25rem;margin-bottom:4px;font-family:var(--serif)}
-.author-en{color:var(--text-soft);font-size:.85rem;letter-spacing:.06em;margin-bottom:14px}
-.author-info p{color:var(--text-soft);font-size:.95rem;margin-bottom:16px}
-.chips.small span{font-size:.76rem;padding:4px 12px}
-
-/* ---------- Quotes ---------- */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
-.quote-card{
-  padding:34px 30px;border-radius:var(--radius);
-  border:1px solid var(--line);background:var(--bg-soft);
-  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
-  display:flex;flex-direction:column;gap:18px;
-}
-.quote-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--gold) 45%,var(--line));box-shadow:0 20px 40px -22px rgba(0,0,0,.18)}
-.quote-card blockquote{
-  font-family:var(--serif);font-size:1rem;line-height:1.85;color:var(--text);
-  border-left:3px solid var(--gold);padding-left:18px;
-}
-.quote-card figcaption{color:var(--text-soft);font-size:.88rem}
-
-/* ---------- Download ---------- */
-.dl-card{
-  padding:38px 34px;border-radius:var(--radius);
-  border:1px solid var(--line);background:var(--bg-soft);
-  display:flex;flex-direction:column;gap:12px;
-  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
-  position:relative;overflow:hidden;
-}
-.dl-card::after{
-  content:'';position:absolute;inset:0;border-radius:inherit;
-  background:linear-gradient(135deg,var(--accent-soft),transparent 60%);
-  opacity:0;transition:opacity .4s var(--ease);pointer-events:none;
-}
-.dl-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:0 20px 40px -22px rgba(0,0,0,.18)}
-.dl-card:hover::after{opacity:1}
-.dl-card>*{position:relative;z-index:1}
-.dl-card .icon{
-  width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
-  background:var(--accent-soft);color:var(--accent);font-size:1.25rem;margin-bottom:8px;
-  transition:transform .4s var(--ease);
-}
-.dl-card:hover .icon{transform:scale(1.1) rotate(-6deg)}
-.dl-card h3{font-size:1.08rem;font-weight:600;letter-spacing:-.01em}
-.dl-card p{color:var(--text-soft);font-size:.92rem}
-.dl-meta{font-size:.8rem!important;color:var(--gold)!important;font-weight:600;letter-spacing:.04em}
-.dl-card .btn{margin-top:14px;width:fit-content}
-.dl-note{color:var(--text-soft);font-size:.82rem;margin-top:26px;max-width:720px}
-
-/* ---------- CTA ---------- */
-.cta{
-  text-align:center;border-radius:24px;padding:76px 34px;
-  background:var(--bg-soft);border:1px solid var(--line);
-  position:relative;overflow:hidden;
-}
-.cta::before{
-  content:'';position:absolute;top:-62%;left:50%;transform:translateX(-50%);
-  width:580px;height:580px;border-radius:50%;
-  background:radial-gradient(circle,var(--accent-soft),transparent 70%);
-  pointer-events:none;
-}
-.cta>*{position:relative;z-index:1}
-.cta h2{margin-bottom:16px}
-.cta p{color:var(--text-soft);max-width:480px;margin:0 auto 32px}
+.book-card:hover .bc-tags span{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
 
 /* ---------- Footer ---------- */
-footer{padding:44px 0;border-top:1px solid var(--line);color:var(--text-soft);font-size:.86rem}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer{
+  padding:46px 0 56px;border-top:1px solid var(--line);
+  color:var(--text-soft);font-size:.84rem;margin-top:40px;
+}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .foot a{transition:color .25s var(--ease)}
 .foot a:hover{color:var(--accent)}
-.foot-links{display:flex;gap:18px}
 
-/* ---------- Mobile ---------- */
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;gap:64px}
-  .hero{padding-top:120px}
+/* ---------- Device: mobile ---------- */
+[data-device="mobile"] .lib-hero{padding:128px 24px 46px}
+[data-device="mobile"] .lib-meta{margin-top:18px}
+[data-device="mobile"] .book-grid{grid-template-columns:1fr;gap:18px;max-width:560px}
+[data-device="mobile"] .book-card{
+  flex-direction:row;align-items:center;text-align:left;
+  gap:16px;padding:14px;border:1px solid var(--line);
+  border-radius:18px;background:var(--bg-soft);
+  transition:border-color .35s var(--ease),transform .35s var(--ease);
 }
-@media(max-width:820px){
-  .nav-links{
-    position:fixed;top:68px;left:0;right:0;
-    flex-direction:column;gap:0;align-items:stretch;
-    background:var(--bg);border-bottom:1px solid var(--line);
-    padding:0 24px;max-height:0;overflow:hidden;
-    transition:max-height .45s var(--ease),padding .45s var(--ease);
-  }
-  .nav-links.open{max-height:380px;padding:14px 24px 22px}
-  .nav-links a{padding:12px 0;font-size:1rem}
-  .nav-links a::after{display:none}
-  .menu-btn{display:block}
-  section{padding:72px 0}
-  .author-card{flex-direction:column;gap:22px;padding:32px 26px}
-}
+[data-device="mobile"] .book-card:hover{border-color:color-mix(in srgb,var(--accent) 40%,var(--line));transform:translateY(-2px)}
+[data-device="mobile"] .bc-cover{width:96px;max-width:96px;flex:none;border-radius:4px 10px 10px 4px}
+[data-device="mobile"] .bc-info{flex:1;min-width:0}
+[data-device="mobile"] .bc-info h2{font-size:1.14rem;margin-bottom:4px}
+[data-device="mobile"] .bc-desc{font-size:.84rem;margin-bottom:10px}
+[data-device="mobile"] .bc-tags{justify-content:flex-start;gap:6px}
+[data-device="mobile"] .bc-tags span{font-size:.7rem;padding:2px 10px}
+[data-device="mobile"] .book-card:hover .bc-cover{transform:none}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
@@ -333,201 +263,78 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--text-soft);fo
 
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#" class="logo"><span class="dot"></span>月亮与六便士</a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#story">简介</a>
-      <a href="#author">作者</a>
-      <a href="#quotes">摘录</a>
-      <a href="#download">下载</a>
-      <a href="reader.html">在线阅读</a>
-    </nav>
+    <a href="index.html" class="logo"><span class="dot"></span>书库</a>
     <div class="nav-right">
-      <a href="reader.html" class="btn btn-primary small">开始阅读</a>
-      <button class="theme-btn" id="themeBtn" aria-label="切换主题">◐</button>
-      <button class="menu-btn" id="menuBtn" aria-label="菜单">☰</button>
+      <a class="icon-btn" href="https://github.com/Youran-yz/youran" target="_blank" rel="noopener" aria-label="GitHub 仓库">
+        <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <button class="icon-btn" id="themeBtn" aria-label="切换主题">◐</button>
     </div>
   </div>
 </header>
 
 <main>
-  <!-- Hero -->
-  <section class="hero wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="badge reveal">✦ 公版经典 · 免费阅读</span>
-        <h1 class="reveal">月亮与六便士</h1>
-        <p class="en-title reveal">The Moon and Sixpence</p>
-        <p class="lead reveal">满地都是六便士，他却抬头看见了月亮。<br>毛姆以画家高更为原型，写下一个中年人抛下一切、奔赴心中月亮的故事。</p>
-        <div class="chips reveal">
-          <span>W. Somerset Maugham</span>
-          <span>1919</span>
-          <span>58 章</span>
-          <span>约 7.5 万词</span>
+  <section class="lib-hero">
+    <h1 class="reveal">书库</h1>
+    <p class="lib-sub reveal">把想读的书，慢慢读完。</p>
+    <p class="lib-meta reveal">在架 <b>2</b> 本 · 持续添加</p>
+  </section>
+
+  <section class="library wrap">
+    <div class="book-grid">
+
+      <a class="book-card reveal" href="moon.html">
+        <div class="bc-cover moon">
+          <div class="bc-stars"></div>
+          <div class="bc-moon"></div>
+          <div class="bc-title">月亮与六便士</div>
+          <div class="bc-author">毛姆</div>
+          <div class="bc-shine"></div>
         </div>
-        <div class="hero-actions reveal">
-          <a href="reader.html" class="btn btn-primary">开始阅读 <span class="arrow">→</span></a>
-          <a href="#download" class="btn btn-ghost">下载本书 ↓</a>
+        <div class="bc-info">
+          <h2>月亮与六便士</h2>
+          <p class="bc-line">毛姆 · W. Somerset Maugham</p>
+          <p class="bc-desc">满地都是六便士，他却抬头看见了月亮。</p>
+          <div class="bc-tags"><span>中英双语</span><span>全文阅读</span><span>免费下载</span></div>
         </div>
-      </div>
-      <div class="hero-cover reveal">
-        <div class="cover-stage">
-          <div class="cover-float">
-            <div class="book">
-              <div class="b-stars"></div>
-              <div class="b-moon"></div>
-              <div class="b-title">
-                <span>The Moon</span>
-                <span>and Sixpence</span>
-                <em>W. Somerset Maugham</em>
-              </div>
-              <div class="b-coin"></div>
-              <div class="b-shine"></div>
-            </div>
-          </div>
+      </a>
+
+      <a class="book-card reveal" href="huozhe.html">
+        <div class="bc-cover hz">
+          <div class="hz-frame"></div>
+          <div class="hz-sun"></div>
+          <div class="bc-title">活着</div>
+          <div class="bc-author">余华</div>
+          <div class="bc-shine"></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="wrap" style="padding-top:0">
-    <div class="stats reveal">
-      <div class="stat"><b>58</b><span>章全文</span></div>
-      <div class="stat"><b>74,658</b><span>词（英文原版）</span></div>
-      <div class="stat"><b>1919</b><span>年首次出版</span></div>
-      <div class="stat"><b>100%</b><span>免费 · 公版</span></div>
-    </div>
-  </section>
-
-  <!-- Story -->
-  <section id="story" class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-tag">Story</span>
-      <h2>内容简介</h2>
-      <p>一个被梦想击中的人，和他身后那个世俗世界。</p>
-    </div>
-    <div class="prose reveal">
-      <p>伦敦证券经纪人查尔斯·斯特里克兰德，年过四十，家庭美满、生活体面。某天，他毫无征兆地抛下妻子儿女，只留下一封信，独自去了巴黎——所有人都以为他有了外遇。真相却令人错愕：他只想画画。</p>
-      <p>从此，他潦倒、粗鲁、冷酷，对一切人情世故不屑一顾。他辗转巴黎、马赛，最终流落南太平洋的塔希提岛，在贫病与偏执中燃烧生命，画下他眼中那个狂热而壮丽的世界。而他的名字，要到他死后许多年，才被世人奉为天才。</p>
-      <p>小说以画家保罗·高更的生平为蓝本，借「我」的眼睛旁观了一场惊世骇俗的人生实验：一个人追逐头顶的月亮，代价是踩碎脚下所有的六便士。</p>
-    </div>
-    <blockquote class="pull reveal">满地都是六便士，<span class="gold">他却抬头看见了月亮。</span></blockquote>
-  </section>
-
-  <!-- Author -->
-  <section id="author" class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-tag">Author</span>
-      <h2>关于作者</h2>
-    </div>
-    <div class="author-card reveal">
-      <div class="author-avatar">WM</div>
-      <div class="author-info">
-        <h3>威廉·萨默塞特·毛姆</h3>
-        <p class="author-en">W. Somerset Maugham · 1874 — 1965</p>
-        <p>英国小说家、剧作家，20 世纪读者最多的作家之一。他做过医生、当过间谍、游历过整个南太平洋。1916 年，他在塔希提岛听闻画家高更的往事，三年后写下《月亮与六便士》，一举奠定其小说家的世界声誉。</p>
-        <div class="chips small">
-          <span>《人生的枷锁》</span>
-          <span>《刀锋》</span>
-          <span>《面纱》</span>
-          <span>《寻欢作乐》</span>
+        <div class="bc-info">
+          <h2>活着</h2>
+          <p class="bc-line">余华 · 1993</p>
+          <p class="bc-desc">人是为了活着本身而活着的。</p>
+          <div class="bc-tags"><span>简介</span><span>作者</span><span>摘录</span><span>正版入口</span></div>
         </div>
-      </div>
-    </div>
-  </section>
+      </a>
 
-  <!-- Quotes -->
-  <section id="quotes" class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-tag">Quotes</span>
-      <h2>精彩摘录</h2>
-      <p>三句原文，与你共赏。</p>
-    </div>
-    <div class="grid">
-      <figure class="quote-card reveal">
-        <blockquote>“It is not true that suffering ennobles the character; happiness does that sometimes, but suffering, for the most part, makes men petty and vindictive.”</blockquote>
-        <figcaption>苦难并不会使人高贵——幸福有时倒能；而苦难，多半只会让人变得狭隘、记仇。</figcaption>
-      </figure>
-      <figure class="quote-card reveal">
-        <blockquote>“I have an idea that some men are born out of their due place. Accident has cast them amid certain surroundings, but they have always a nostalgia for a home they know not.”</blockquote>
-        <figcaption>我总觉得，有些人生来就错置了地方。命运把他们抛进某种环境，他们却始终怀念着一个自己也不知道在哪里的故乡。</figcaption>
-      </figure>
-      <figure class="quote-card reveal">
-        <blockquote>“Why should you think that beauty, which is the most precious thing in the world, lies like a stone on the beach for the careless passer-by to pick up idly?”</blockquote>
-        <figcaption>你凭什么认为，世界上最珍贵的美，会像沙滩上的一颗石子，等着漫不经心的路人随手捡起？</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- Download -->
-  <section id="download" class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-tag">Download</span>
-      <h2>下载本书</h2>
-      <p>两种格式，任选其一。全部免费，无注册、无广告。</p>
-    </div>
-    <div class="grid">
-      <div class="dl-card reveal">
-        <div class="icon">◈</div>
-        <h3>EPUB 电子书</h3>
-        <p>含封面与完整章节目录，适配手机、Kindle 等主流阅读器。</p>
-        <p class="dl-meta">约 283 KB · 58 章 · 带封面</p>
-        <a class="btn btn-primary" href="./book/moon-and-sixpence.epub" download="moon-and-sixpence.epub">下载 EPUB <span class="arrow">↓</span></a>
-      </div>
-      <div class="dl-card reveal">
-        <div class="icon">◇</div>
-        <h3>TXT 纯文本</h3>
-        <p>全文纯文本，含 Project Gutenberg 版权信息，适合任意设备与二次处理。</p>
-        <p class="dl-meta">约 431 KB · 英文原版</p>
-        <a class="btn btn-ghost" href="./book/moon-and-sixpence.txt" download="moon-and-sixpence.txt">下载 TXT <span class="arrow">↓</span></a>
-      </div>
-    </div>
-    <p class="dl-note reveal">文本为 1919 年英文原版，属公有领域（美国），源自 Project Gutenberg eBook #222。仅供个人学习交流，请勿用于商业用途。</p>
-  </section>
-
-  <!-- CTA -->
-  <section class="wrap">
-    <div class="cta reveal">
-      <h2>现在，翻开它</h2>
-      <p>58 章全文已就绪，打开即读——祝你在月亮与六便士之间，找到自己的答案。</p>
-      <a href="reader.html" class="btn btn-primary big">进入阅读 <span class="arrow">→</span></a>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <span>© 2026 月亮与六便士 · 在线阅读与下载</span>
-    <div class="foot-links">
-      <a href="https://github.com/Youran-yz/youran" target="_blank" rel="noopener">GitHub 仓库</a>
-      <a href="https://www.gutenberg.org/ebooks/222" target="_blank" rel="noopener">文本来源</a>
-    </div>
+    <span>© 2026 书库 · 仅供学习交流</span>
+    <a href="https://github.com/Youran-yz/youran" target="_blank" rel="noopener">GitHub 仓库</a>
   </div>
 </footer>
 
 <script>
 (() => {
   const hdr = document.getElementById('hdr');
-  const navLinks = document.getElementById('navLinks');
-  const menuBtn = document.getElementById('menuBtn');
   const themeBtn = document.getElementById('themeBtn');
 
-  // 顶部滚动状态
   const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 8);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // 移动端菜单
-  menuBtn.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    menuBtn.textContent = open ? '✕' : '☰';
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    menuBtn.textContent = '☰';
-  }));
-
-  // 主题切换（跟随系统 + 本地记忆）
   const saved = localStorage.getItem('moon-theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const setTheme = t => {
@@ -540,34 +347,20 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--text-soft);fo
     setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
   });
 
-  // 滚动渐入
   const items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('in'), i * 70);
+          setTimeout(() => e.target.classList.add('in'), i * 90);
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
     items.forEach(el => io.observe(el));
   } else {
     items.forEach(el => el.classList.add('in'));
   }
-
-  // 平滑锚点
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      if (id === '#') return;
-      const el = document.querySelector(id);
-      if (!el) return;
-      e.preventDefault();
-      const top = el.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
 })();
 </script>
 </body>

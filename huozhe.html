@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>活着 · 书库</title>
+<meta name="description" content="余华《活着》：作品简介、作者与精彩摘录，附正版阅读入口。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='36' fill='%23e8c96a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var w = window.innerWidth;
+  var ua = navigator.userAgent || '';
+  var mobile = w <= 768 || /Android|iPhone|iPad|iPod|Mobile|HarmonyOS/i.test(ua);
+  document.documentElement.setAttribute('data-device', mobile ? 'mobile' : 'desktop');
+})();
+</script>
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-soft:#f7f7fb;
+  --text:#101018;
+  --text-soft:#5a5f73;
+  --line:#e8e9f0;
+  --accent:#4f5ae0;
+  --accent-soft:#eef0ff;
+  --gold:#c9973a;
+  --gold-soft:#fdf6e6;
+  --red:#a83226;
+  --red-soft:#fbeeea;
+  --radius:16px;
+  --maxw:1120px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sans:'Inter',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  --serif:'Noto Serif SC','Songti SC','SimSun',Georgia,serif;
+}
+html[data-theme="dark"]{
+  --bg:#0a0b13;
+  --bg-soft:#12131d;
+  --text:#f1f2f7;
+  --text-soft:#9aa0b4;
+  --line:#22242f;
+  --accent:#8f97ff;
+  --accent-soft:#171a2e;
+  --gold:#e3b25e;
+  --gold-soft:#1d1a10;
+  --red:#e0705f;
+  --red-soft:#221210;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition:background .4s var(--ease),color .4s var(--ease);
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- Nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease),background .4s var(--ease);
+}
+header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;font-size:1.02rem;letter-spacing:.02em;display:flex;align-items:center;gap:8px;font-family:var(--serif)}
+.back-arrow{display:inline-block;transition:transform .3s var(--ease)}
+.logo:hover .back-arrow{transform:translateX(-4px)}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft);animation:pulse 2.6s var(--ease) infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:.9rem;color:var(--text-soft);font-weight:500;position:relative;transition:color .25s var(--ease)}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:1.5px;background:var(--accent);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:10px}
+.icon-btn{
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+  background:transparent;color:var(--text);cursor:pointer;
+  display:grid;place-items:center;font-size:15px;
+  transition:transform .3s var(--ease),border-color .3s var(--ease);
+}
+button.icon-btn:hover{transform:rotate(35deg);border-color:var(--accent)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:36px;height:36px;color:var(--text);font-size:1.1rem;cursor:pointer}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 26px;border-radius:999px;font-size:.92rem;font-weight:500;
+  cursor:pointer;border:1px solid transparent;font-family:var(--sans);
+  transition:transform .28s var(--ease),box-shadow .28s var(--ease),background .28s var(--ease),border-color .28s var(--ease),color .28s var(--ease);
+}
+.btn:active{transform:scale(.97)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 10px 28px -8px var(--red)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+
+/* ---------- Hero ---------- */
+.hero{min-height:92svh;display:flex;flex-direction:column;justify-content:center;padding:130px 0 80px;position:relative}
+.hero::before{
+  content:'';position:absolute;top:-6%;right:-4%;width:640px;height:640px;
+  background:radial-gradient(circle,var(--red-soft) 0%,transparent 68%);
+  filter:blur(30px);z-index:-1;pointer-events:none;
+  animation:floatBg 14s ease-in-out infinite;
+}
+@keyframes floatBg{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,40px)}}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.15;letter-spacing:.1em;font-weight:700;margin-bottom:12px;font-family:var(--serif)}
+.en-title{font-family:var(--serif);letter-spacing:.2em;text-transform:uppercase;font-size:.76rem;color:var(--text-soft);margin-bottom:22px}
+.lead{font-size:clamp(1rem,1.8vw,1.1rem);color:var(--text-soft);max-width:560px;margin-bottom:24px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.chips span{
+  font-size:.8rem;color:var(--text-soft);border:1px solid var(--line);
+  padding:5px 14px;border-radius:999px;background:var(--bg-soft);
+  transition:border-color .3s var(--ease),color .3s var(--ease);
+}
+.chips span:hover{border-color:var(--red);color:var(--red)}
+.notice{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:16px 18px;border-radius:14px;
+  background:var(--red-soft);border:1px solid color-mix(in srgb,var(--red) 22%,transparent);
+  margin-bottom:30px;max-width:560px;
+}
+.notice-icon{
+  flex:none;width:22px;height:22px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.7rem;
+  display:grid;place-items:center;margin-top:3px;font-weight:700;
+}
+.notice p{color:var(--text-soft);font-size:.86rem;line-height:1.75}
+.notice b{color:var(--red);font-weight:600}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- Cover (CSS art) ---------- */
+.cover-stage{display:flex;justify-content:center;perspective:1400px}
+.cover-float{animation:coverFloat 7s ease-in-out infinite}
+@keyframes coverFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.book{
+  position:relative;width:min(320px,72vw);aspect-ratio:2/3;
+  border-radius:5px 18px 18px 5px;
+  overflow:hidden;
+  transform:rotateY(-5deg);
+  transition:transform .6s var(--ease),box-shadow .6s var(--ease);
+}
+.book.hz{
+  background:linear-gradient(168deg,#2b0a0a 0%,#571410 52%,#7d2418 100%);
+  box-shadow:0 40px 80px -30px rgba(43,10,10,.6),0 0 200px rgba(168,50,38,.1);
+}
+.cover-stage:hover .book{transform:rotateY(-1deg) scale(1.015)}
+.cover-stage:hover .book.hz{box-shadow:0 50px 90px -30px rgba(43,10,10,.65),0 0 220px rgba(168,50,38,.16)}
+.book.hz::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:16px;z-index:2;
+  background:linear-gradient(90deg,rgba(255,235,210,.14),rgba(255,235,210,0) 90%);
+}
+.hz-frame2{
+  position:absolute;inset:5.5%;z-index:3;
+  border:1px solid rgba(255,235,210,.22);border-radius:2px;
+}
+.hz-sun2{
+  position:absolute;top:11%;left:50%;transform:translateX(-50%);
+  width:48%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 40% 34%,#ffd98d,#e8843f 58%,#b84a24);
+  box-shadow:0 0 70px 18px rgba(232,132,63,.36);
+}
+.b-title{position:absolute;bottom:24%;left:0;right:0;text-align:center;color:#f6e8d8;font-family:var(--serif)}
+.b-title .b-cn{display:block;font-size:2.6rem;letter-spacing:.2em;text-indent:.2em;line-height:1.4}
+.b-title em{display:block;font-style:normal;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(246,232,216,.5);margin-top:12px}
+.b-title .b-by{margin-top:6px;font-size:.66rem;letter-spacing:.2em;color:rgba(246,232,216,.62)}
+.b-shine{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.09) 46%,transparent 62%);
+  transform:translateX(-130%);transition:transform .9s var(--ease);
+}
+.cover-stage:hover .b-shine{transform:translateX(130%)}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Sections ---------- */
+section{padding:96px 0}
+.sec-head{margin-bottom:52px;max-width:640px}
+.sec-tag{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:block}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:.01em;line-height:1.25;font-weight:700;margin-bottom:14px;font-family:var(--serif)}
+.sec-head p{color:var(--text-soft);font-size:1rem}
+
+.prose{max-width:760px}
+.prose p{color:var(--text-soft);font-size:1.02rem;margin-bottom:22px}
+.prose p:first-child::first-letter{font-family:var(--serif);font-size:1.6em;color:var(--text);float:left;line-height:1;padding:6px 10px 0 0}
+.pull{
+  font-family:var(--serif);font-size:clamp(1.25rem,2.6vw,1.7rem);
+  text-align:center;margin:70px auto 0;max-width:680px;
+  padding:38px 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  letter-spacing:.03em;
+}
+.pull .red{color:var(--red)}
+
+/* ---------- Author ---------- */
+.author-card{
+  display:flex;gap:34px;align-items:flex-start;
+  padding:40px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--bg-soft);
+  transition:border-color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease);
+}
+.author-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--red) 40%,var(--line));box-shadow:0 20px 44px -24px rgba(0,0,0,.2)}
+.author-avatar{
+  flex:none;width:86px;height:86px;border-radius:50%;
+  display:grid;place-items:center;font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#f6e8d8;
+  background:radial-gradient(circle at 35% 30%,#6b241c,#3a120e 70%);
+  box-shadow:0 0 0 6px var(--red-soft),0 0 34px rgba(168,50,38,.3);
+}
+.author-info h3{font-size:1.25rem;margin-bottom:4px;font-family:var(--serif)}
+.author-en{color:var(--text-soft);font-size:.85rem;letter-spacing:.06em;margin-bottom:14px}
+.author-info p{color:var(--text-soft);font-size:.95rem;margin-bottom:16px}
+.chips.small span{font-size:.76rem;padding:4px 12px}
+
+/* ---------- Quotes ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.quote-card{
+  padding:36px 32px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--bg-soft);
+  transition:transform .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease);
+  display:flex;flex-direction:column;gap:18px;
+}
+.quote-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--red) 45%,var(--line));box-shadow:0 20px 40px -22px rgba(0,0,0,.18)}
+.quote-cn{
+  font-family:var(--serif);font-size:1.04rem;line-height:2;color:var(--text);
+  border-left:3px solid var(--red);padding-left:18px;
+}
+.quote-src{color:var(--text-soft);font-size:.8rem;padding-left:21px}
+
+/* ---------- Links ---------- */
+.links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.link-card{
+  display:flex;flex-direction:column;gap:6px;
+  padding:26px 26px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--bg-soft);
+  transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);
+  position:relative;overflow:hidden;
+}
+.link-card::after{
+  content:'→';position:absolute;right:22px;top:24px;
+  color:var(--text-soft);font-size:1rem;
+  transition:transform .35s var(--ease),color .35s var(--ease);
+}
+.link-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--red) 42%,var(--line));box-shadow:0 18px 36px -22px rgba(0,0,0,.18)}
+.link-card:hover::after{transform:translateX(4px);color:var(--red)}
+.lc-name{font-weight:600;font-size:1.02rem;font-family:var(--serif)}
+.lc-desc{color:var(--text-soft);font-size:.84rem}
+.dl-note{color:var(--text-soft);font-size:.82rem;margin-top:24px;max-width:760px}
+
+/* ---------- Footer ---------- */
+footer{padding:44px 0 56px;border-top:1px solid var(--line);color:var(--text-soft);font-size:.84rem}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot a{transition:color .25s var(--ease)}
+.foot a:hover{color:var(--accent)}
+
+/* ---------- Device: mobile ---------- */
+[data-device="mobile"] .hero{padding:112px 0 56px;min-height:auto}
+[data-device="mobile"] .hero-grid{grid-template-columns:1fr;gap:44px}
+[data-device="mobile"] .hero-cover{order:-1}
+[data-device="mobile"] .book{width:min(210px,58vw)}
+[data-device="mobile"] .b-title .b-cn{font-size:2rem}
+[data-device="mobile"] h1{font-size:clamp(1.9rem,8vw,2.5rem)}
+[data-device="mobile"] section{padding:64px 0}
+[data-device="mobile"] .sec-head{margin-bottom:36px}
+[data-device="mobile"] .author-card{flex-direction:column;gap:22px;padding:30px 24px}
+[data-device="mobile"] .prose p{font-size:.98rem}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:820px){
+  .nav-links{
+    position:fixed;top:64px;left:0;right:0;
+    flex-direction:column;gap:0;align-items:stretch;
+    background:var(--bg);border-bottom:1px solid var(--line);
+    padding:0 24px;max-height:0;overflow:hidden;
+    transition:max-height .45s var(--ease),padding .45s var(--ease);
+  }
+  .nav-links.open{max-height:360px;padding:12px 24px 20px}
+  .nav-links a{padding:12px 0;font-size:1rem}
+  .nav-links a::after{display:none}
+  .menu-btn{display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="logo"><span class="back-arrow">←</span><span class="dot"></span>书库</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#story">简介</a>
+      <a href="#author">作者</a>
+      <a href="#quotes">摘录</a>
+      <a href="#links">正版阅读</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#links" class="btn btn-red" style="padding:9px 20px;font-size:.85rem">正版阅读</a>
+      <button class="icon-btn" id="themeBtn" aria-label="切换主题">◐</button>
+      <button class="menu-btn" id="menuBtn" aria-label="菜单">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1 class="reveal">活着</h1>
+        <p class="en-title reveal">To Live · 余华 · 1993</p>
+        <p class="lead reveal">地主少爷福贵赌光了家业，此后的一生，他经历战乱、饥荒与一次次告别，亲手送走了所有亲人——而他，依然活着。</p>
+        <div class="chips reveal">
+          <span>中文</span>
+          <span>长篇小说</span>
+          <span>1993</span>
+          <span>余华代表作</span>
+        </div>
+        <div class="notice reveal">
+          <span class="notice-icon">©</span>
+          <p>《活着》仍在<b>版权保护期</b>内，本站不提供全文阅读与下载。本页为作品导览：简介、作者与摘录，全文请支持正版。</p>
+        </div>
+        <div class="hero-actions reveal">
+          <a href="#links" class="btn btn-red">正版阅读入口 <span class="arrow">→</span></a>
+          <a href="#story" class="btn btn-ghost">查看简介</a>
+        </div>
+      </div>
+      <div class="hero-cover reveal">
+        <div class="cover-stage">
+          <div class="cover-float">
+            <div class="book hz">
+              <div class="hz-frame2"></div>
+              <div class="hz-sun2"></div>
+              <div class="b-title">
+                <span class="b-cn">活着</span>
+                <em>To Live</em>
+                <em class="b-by">余华 著</em>
+              </div>
+              <div class="b-shine"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section id="story" class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Story</span>
+      <h2>内容简介</h2>
+      <p>一个人和他命运之间的友情。</p>
+    </div>
+    <div class="prose reveal">
+      <p>《活着》讲述了一个叫福贵的老人一生的故事。他本是地主家的少爷，年轻时吃喝嫖赌，输光了全部家产；此后被抓壮丁、经历战乱，回到家时母亲已经去世，女儿也因病成了哑巴。</p>
+      <p>接下来的几十年里，苦难接踵而至：儿子有庆因献血而死，女儿凤霞难产而死，妻子家珍久病离世，女婿二喜死于事故，最后连小外孙苦根也意外夭折。福贵送走了一个又一个亲人，最后陪着他的，只剩下一头老牛——它也叫福贵。</p>
+      <p>余华用最朴素的语言写尽了苦难，也写尽了承受苦难的平静与坚韧。这本书 1993 年出版，被翻译成四十多种语言，是二十世纪中文小说中读者最多的作品之一。</p>
+    </div>
+    <blockquote class="pull reveal">人是为了活着本身而活着的，<br><span class="red">而不是为了活着之外的任何事物而活着。</span></blockquote>
+  </section>
+
+  <!-- Author -->
+  <section id="author" class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Author</span>
+      <h2>关于作者</h2>
+    </div>
+    <div class="author-card reveal">
+      <div class="author-avatar">YH</div>
+      <div class="author-info">
+        <h3>余华</h3>
+        <p class="author-en">Yu Hua · 1960 —</p>
+        <p>1960 年生于浙江杭州，当代作家，中国先锋文学代表人物之一。曾做过五年牙医，1983 年开始写作。代表作有《活着》《许三观卖血记》《兄弟》《文城》等，作品被翻译成四十多种语言。</p>
+        <div class="chips small">
+          <span>《许三观卖血记》</span>
+          <span>《兄弟》</span>
+          <span>《在细雨中呼喊》</span>
+          <span>《文城》</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quotes -->
+  <section id="quotes" class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Quotes</span>
+      <h2>精彩摘录</h2>
+      <p>两句自序，读懂《活着》。</p>
+    </div>
+    <div class="grid">
+      <figure class="quote-card reveal">
+        <blockquote class="quote-cn">人是为了活着本身而活着的，而不是为了活着之外的任何事物而活着。</blockquote>
+        <p class="quote-src">——《活着》中文版自序</p>
+      </figure>
+      <figure class="quote-card reveal">
+        <blockquote class="quote-cn">作为一个词语，「活着」在我们中国的语言里充满了力量，它的力量不是来自于喊叫，也不是来自于进攻，而是忍受——去忍受生命赋予我们的责任，去忍受现实给予我们的幸福和苦难、无聊和平庸。</blockquote>
+        <p class="quote-src">——《活着》韩文版自序</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <section id="links" class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Read</span>
+      <h2>正版阅读</h2>
+      <p>以下均为正规平台入口，全文请通过正版渠道阅读。</p>
+    </div>
+    <div class="links-grid">
+      <a class="link-card reveal" href="https://book.douban.com/subject/4913064/" target="_blank" rel="noopener">
+        <span class="lc-name">豆瓣读书</span>
+        <span class="lc-desc">查看评分、简介与读者书评</span>
+      </a>
+      <a class="link-card reveal" href="https://search.jd.com/Search?keyword=%E6%B4%BB%E7%9D%80%20%E4%BD%99%E5%8D%8E" target="_blank" rel="noopener">
+        <span class="lc-name">京东图书</span>
+        <span class="lc-desc">购买纸质书 / 电子书</span>
+      </a>
+      <a class="link-card reveal" href="https://search.dangdang.com/?key=%E6%B4%BB%E7%9D%80%20%E4%BD%99%E5%8D%8E" target="_blank" rel="noopener">
+        <span class="lc-name">当当网</span>
+        <span class="lc-desc">购买纸质书 / 电子书</span>
+      </a>
+    </div>
+    <p class="dl-note reveal">《活着》版权归余华及相关出版机构所有。本页仅供学习交流，不存储、不提供作品全文。</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 书库 · 仅供学习交流</span>
+    <a href="index.html">← 返回书库</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const hdr = document.getElementById('hdr');
+  const navLinks = document.getElementById('navLinks');
+  const menuBtn = document.getElementById('menuBtn');
+  const themeBtn = document.getElementById('themeBtn');
+
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.textContent = open ? '✕' : '☰';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.textContent = '☰';
+  }));
+
+  const saved = localStorage.getItem('moon-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const setTheme = t => {
+    document.documentElement.dataset.theme = t;
+    themeBtn.textContent = t === 'dark' ? '☀' : '◐';
+    localStorage.setItem('moon-theme', t);
+  };
+  setTheme(saved || (prefersDark ? 'dark' : 'light'));
+  themeBtn.addEventListener('click', () => {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 70);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(el => io.observe(el));
+  } else {
+    items.forEach(el => el.classList.add('in'));
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

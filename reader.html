@@ -2,13 +2,21 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>在线阅读 · 月亮与六便士</title>
-<meta name="description" content="《月亮与六便士》全文在线阅读：58 章、章节目录、字号调节、深浅色模式。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>阅读 · 月亮与六便士</title>
+<meta name="description" content="《月亮与六便士》全文在线阅读：中英双语、58 章、字号调节、深浅色模式。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='36' fill='%23e8c96a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var w = window.innerWidth;
+  var ua = navigator.userAgent || '';
+  var mobile = w <= 768 || /Android|iPhone|iPad|iPod|Mobile|HarmonyOS/i.test(ua);
+  document.documentElement.setAttribute('data-device', mobile ? 'mobile' : 'desktop');
+})();
+</script>
 <style>
 :root{
   --bg:#ffffff;
@@ -58,17 +66,28 @@ header{
   transition:border-color .3s var(--ease),background .4s var(--ease);
 }
 header.scrolled{border-bottom-color:var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
-.logo{font-weight:700;font-size:1rem;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;font-family:var(--serif);flex:none}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.logo{font-weight:700;font-size:1rem;letter-spacing:.02em;display:flex;align-items:center;gap:8px;font-family:var(--serif);flex:none}
 .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft);animation:pulse 2.6s var(--ease) infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
-.back-arrow{display:inline-block;transition:transform .3s var(--ease);margin-right:2px}
+.back-arrow{display:inline-block;transition:transform .3s var(--ease)}
 .logo:hover .back-arrow{transform:translateX(-4px)}
 .tools{display:flex;align-items:center;gap:10px}
+.lang-seg{
+  display:flex;border:1px solid var(--line);border-radius:999px;
+  overflow:hidden;flex:none;background:var(--bg-soft);
+}
+.lang-seg button{
+  border:none;background:transparent;color:var(--text-soft);
+  font-family:var(--sans);font-size:.78rem;font-weight:600;
+  padding:0 13px;height:34px;cursor:pointer;
+  transition:background .3s var(--ease),color .3s var(--ease);
+}
+.lang-seg button.active{background:var(--accent);color:#fff}
 #chapterSelect{
   font-family:var(--sans);font-size:.85rem;color:var(--text);
   background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;
-  padding:8px 14px;cursor:pointer;max-width:40vw;
+  padding:8px 14px;cursor:pointer;max-width:38vw;
   transition:border-color .3s var(--ease);outline:none;
 }
 #chapterSelect:hover,#chapterSelect:focus{border-color:var(--accent)}
@@ -84,10 +103,10 @@ header.scrolled{border-bottom-color:var(--line)}
 .progress-track i{display:block;height:100%;width:0;background:var(--accent);transition:width .1s linear}
 
 /* ---------- Article ---------- */
-main{padding-top:68px}
+main{padding-top:64px}
 .article{max-width:720px;margin:0 auto;padding:0 24px;font-size:18px}
-.chapter-head{text-align:center;padding:64px 0 44px;border-bottom:1px solid var(--line);margin-bottom:52px}
-.book-mini{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--text-soft);margin-bottom:20px}
+.chapter-head{text-align:center;padding:60px 0 40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+.book-mini{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-soft);margin-bottom:18px}
 #chapterTitle{
   font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);
   letter-spacing:.05em;font-weight:600;
@@ -99,13 +118,19 @@ main{padding-top:68px}
   transition:opacity .28s var(--ease),transform .28s var(--ease);
 }
 .chapter-body.fading{opacity:0;transform:translateY(10px)}
-.chapter-body p{margin-bottom:1.15em;text-align:justify;text-justify:inter-word;animation:pIn .45s var(--ease) both}
+.chapter-body p{animation:pIn .45s var(--ease) both}
 @keyframes pIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-.chapter-body p:first-child::first-letter{font-size:1.5em;float:left;line-height:1;padding:5px 9px 0 0;color:var(--gold)}
+.chapter-body.lang-en p{margin-bottom:1.15em;text-align:justify;text-justify:inter-word}
+.chapter-body.lang-en p:first-child::first-letter{font-size:1.5em;float:left;line-height:1;padding:5px 9px 0 0;color:var(--gold)}
+.chapter-body.lang-zh{font-family:var(--serif)}
+.chapter-body.lang-zh p{
+  margin-bottom:.6em;text-align:justify;
+  text-indent:2em;line-height:2.05;
+}
 
 /* ---------- Pager ---------- */
 .pager{
-  max-width:720px;margin:76px auto 0;padding:0 24px 84px;
+  max-width:720px;margin:70px auto 0;padding:0 24px 84px;
   display:flex;justify-content:space-between;align-items:center;gap:12px;
 }
 .btn{
@@ -124,19 +149,42 @@ main{padding-top:68px}
 .reader-foot{
   border-top:1px solid var(--line);
   text-align:center;color:var(--text-soft);font-size:.8rem;
-  padding:30px 24px 52px;
+  padding:30px 24px 52px;line-height:1.9;
 }
 .reader-foot a{color:var(--accent)}
 
-/* ---------- Mobile ---------- */
+/* ---------- Mobile bottom bar ---------- */
+.m-bar{display:none}
+[data-device="mobile"] .m-bar{
+  display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-top:1px solid var(--line);
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  gap:8px;
+}
+.m-bar button{
+  flex:1;height:42px;border-radius:12px;border:1px solid var(--line);
+  background:transparent;color:var(--text);font-size:.86rem;font-family:var(--sans);
+  cursor:pointer;
+  transition:border-color .25s var(--ease),color .25s var(--ease),opacity .25s var(--ease);
+}
+.m-bar button:active{border-color:var(--accent);color:var(--accent)}
+.m-bar button:disabled{opacity:.35}
+[data-device="mobile"] .reader-foot{padding-bottom:120px}
+
+/* ---------- Mobile tweaks ---------- */
 @media(max-width:560px){
   .logo .logo-text{display:none}
-  #chapterSelect{max-width:36vw;font-size:.8rem;padding:8px 10px}
-  .tools{gap:7px}
+  .tools{gap:6px}
+  #chapterSelect{max-width:27vw;font-size:.78rem;padding:7px 8px}
+  .tool-btn{width:32px;height:32px;font-size:.78rem}
+  .lang-seg button{padding:0 9px;height:32px;font-size:.72rem}
   .article{padding:0 20px}
-  .pager{padding:0 20px 68px}
+  .pager{padding:0 20px 60px}
   .pager .btn{padding:11px 16px;font-size:.82rem}
-  .chapter-head{padding:48px 0 36px}
+  .chapter-head{padding:44px 0 32px;margin-bottom:36px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -147,8 +195,12 @@ main{padding-top:68px}
 
 <header id="hdr">
   <div class="wrap nav">
-    <a href="index.html" class="logo"><span class="back-arrow">←</span><span class="dot"></span><span class="logo-text">月亮与六便士</span></a>
+    <a href="moon.html" class="logo"><span class="back-arrow">←</span><span class="dot"></span><span class="logo-text">月亮与六便士</span></a>
     <div class="tools">
+      <div class="lang-seg" id="langSeg">
+        <button data-lang="zh">中</button>
+        <button data-lang="en">EN</button>
+      </div>
       <select id="chapterSelect" aria-label="章节目录"></select>
       <button id="fontDec" class="tool-btn" aria-label="减小字号">A−</button>
       <button id="fontInc" class="tool-btn" aria-label="增大字号">A+</button>
@@ -161,32 +213,48 @@ main{padding-top:68px}
 <main>
   <article class="article" id="article">
     <header class="chapter-head">
-      <p class="book-mini">The Moon and Sixpence · W. Somerset Maugham</p>
+      <p class="book-mini" id="bookMini">The Moon and Sixpence · W. Somerset Maugham</p>
       <h1 id="chapterTitle">Chapter I</h1>
     </header>
-    <div id="chapterBody" class="chapter-body"></div>
+    <div id="chapterBody" class="chapter-body lang-en"></div>
   </article>
 
   <nav class="pager">
     <button id="prevBtn" class="btn">← 上一章</button>
-    <a href="index.html" class="btn home">返回首页</a>
+    <a href="moon.html" class="btn home">返回详情</a>
     <button id="nextBtn" class="btn">下一章 →</button>
   </nav>
 </main>
 
 <footer class="reader-foot">
-  <p>文本源自 <a href="https://www.gutenberg.org/ebooks/222" target="_blank" rel="noopener">Project Gutenberg eBook #222</a>（公有领域）· 仅供学习交流</p>
+  <p>中文译文由 AI 翻译整理，仅供学习参考 · 原文：<a href="https://www.gutenberg.org/ebooks/222" target="_blank" rel="noopener">Project Gutenberg #222</a>（公有领域）</p>
 </footer>
 
-<script src="./book/chapters.js"></script>
+<nav class="m-bar" id="mBar">
+  <button id="mPrev">‹ 上一章</button>
+  <button id="mTop">目录 ↑</button>
+  <button id="mNext">下一章 ›</button>
+</nav>
+
+<script src="./book/moon-en.js"></script>
+<script src="./book/moon-zh.js"></script>
 <script>
 (() => {
-  const chapters = window.BOOK_CHAPTERS || [];
+  const EN = window.MOON_EN || null;
+  const ZH = window.MOON_ZH || null;
+  const books = { en: EN, zh: ZH };
+  const has = l => !!(books[l] && books[l].chapters && books[l].chapters.length);
+
   const titleEl = document.getElementById('chapterTitle');
+  const miniEl = document.getElementById('bookMini');
   const bodyEl = document.getElementById('chapterBody');
   const select = document.getElementById('chapterSelect');
+  const langSeg = document.getElementById('langSeg');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mTop = document.getElementById('mTop');
   const progressBar = document.getElementById('progressBar');
   const fontDec = document.getElementById('fontDec');
   const fontInc = document.getElementById('fontInc');
@@ -194,12 +262,12 @@ main{padding-top:68px}
   const hdr = document.getElementById('hdr');
   const article = document.getElementById('article');
 
-  if (!chapters.length) {
-    bodyEl.innerHTML = '<p>章节数据加载失败，请确认 book/chapters.js 已正确部署。</p>';
+  if (!has('en') && !has('zh')) {
+    bodyEl.innerHTML = '<p>章节数据加载失败，请确认 book/ 目录已正确部署。</p>';
     return;
   }
 
-  // ---------- 主题（与首页共用记忆） ----------
+  // ---------- 主题 ----------
   const saved = localStorage.getItem('moon-theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const setTheme = t => {
@@ -225,42 +293,70 @@ main{padding-top:68px}
   fontInc.addEventListener('click', () => { if (size < 24) { size++; applySize(); } });
   applySize();
 
-  // ---------- 目录 ----------
-  chapters.forEach((c, i) => {
-    const o = document.createElement('option');
-    o.value = String(i);
-    o.textContent = 'Chapter ' + c.num + ' · 第 ' + (i + 1) + ' 章';
-    select.appendChild(o);
-  });
+  // ---------- 语言 ----------
+  let lang = 'en';
+  const savedLang = localStorage.getItem('moon-lang');
+  if (savedLang && has(savedLang)) lang = savedLang;
+  else if (has('zh')) lang = 'zh';
+
+  const CN_D = ['零','一','二','三','四','五','六','七','八','九'];
+  function cnNum(n) {
+    if (n <= 10) return n === 10 ? '十' : CN_D[n];
+    if (n < 20) return '十' + CN_D[n - 10];
+    const t = Math.floor(n / 10), o = n % 10;
+    return CN_D[t] + '十' + (o ? CN_D[o] : '');
+  }
+
+  const chapterLabel = (l, i) =>
+    l === 'zh' ? ('第' + cnNum(i + 1) + '章') : ('Chapter ' + books[l].chapters[i].num);
+
+  const updateSeg = () => {
+    langSeg.querySelectorAll('button').forEach(b => {
+      const l = b.dataset.lang;
+      b.style.display = has(l) ? '' : 'none';
+      b.classList.toggle('active', l === lang);
+    });
+  };
+
+  const rebuildSelect = () => {
+    select.innerHTML = '';
+    books[lang].chapters.forEach((c, i) => {
+      const o = document.createElement('option');
+      o.value = String(i);
+      o.textContent = chapterLabel(lang, i);
+      select.appendChild(o);
+    });
+  };
 
   // ---------- 渲染 ----------
   let current = 0;
   let busy = false;
 
-  const parseHash = () => {
-    const m = location.hash.match(/^#(\d+)$/);
-    const n = m ? parseInt(m[1], 10) - 1 : 0;
-    return (n >= 0 && n < chapters.length) ? n : 0;
-  };
-
-  const paint = (i) => {
-    const c = chapters[i];
-    titleEl.textContent = 'Chapter ' + c.num;
+  const paint = () => {
+    const list = books[lang].chapters;
+    const c = list[current];
+    titleEl.textContent = chapterLabel(lang, current);
+    miniEl.textContent = lang === 'zh'
+      ? '月亮与六便士 · 毛姆'
+      : 'The Moon and Sixpence · W. Somerset Maugham';
     bodyEl.innerHTML = c.paras.map((p, k) =>
       '<p style="animation-delay:' + Math.min(k * 24, 260) + 'ms">' + p + '</p>'
     ).join('');
-    select.value = String(i);
-    prevBtn.disabled = i === 0;
-    nextBtn.disabled = i === chapters.length - 1;
-    document.title = 'Chapter ' + c.num + ' · 月亮与六便士';
-    try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+    bodyEl.classList.remove('lang-en', 'lang-zh');
+    bodyEl.classList.add('lang-' + lang);
+    select.value = String(current);
+    prevBtn.disabled = mPrev.disabled = current === 0;
+    nextBtn.disabled = mNext.disabled = current === list.length - 1;
+    document.title = chapterLabel(lang, current) + ' · 月亮与六便士';
+    try { history.replaceState(null, '', '#' + lang + '-' + (current + 1)); } catch (e) {}
   };
 
   const render = (i, instant) => {
-    if (i === current && !instant) return;
+    const list = books[lang].chapters;
+    i = Math.max(0, Math.min(i, list.length - 1));
     if (instant) {
       current = i;
-      paint(i);
+      paint();
       return;
     }
     if (busy) return;
@@ -269,7 +365,7 @@ main{padding-top:68px}
     bodyEl.classList.add('fading');
     titleEl.style.opacity = '0';
     setTimeout(() => {
-      paint(i);
+      paint();
       window.scrollTo(0, 0);
       bodyEl.classList.remove('fading');
       titleEl.style.opacity = '1';
@@ -277,18 +373,32 @@ main{padding-top:68px}
     }, 190);
   };
 
+  const setLang = l => {
+    if (!has(l) || l === lang) return;
+    lang = l;
+    localStorage.setItem('moon-lang', l);
+    rebuildSelect();
+    updateSeg();
+    render(current);
+  };
+
   // ---------- 事件 ----------
+  langSeg.querySelectorAll('button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.lang));
+  });
   select.addEventListener('change', () => render(parseInt(select.value, 10)));
   prevBtn.addEventListener('click', () => { if (current > 0) render(current - 1); });
-  nextBtn.addEventListener('click', () => { if (current < chapters.length - 1) render(current + 1); });
+  nextBtn.addEventListener('click', () => { if (current < books[lang].chapters.length - 1) render(current + 1); });
+  mPrev.addEventListener('click', () => { if (current > 0) render(current - 1); });
+  mNext.addEventListener('click', () => { if (current < books[lang].chapters.length - 1) render(current + 1); });
+  mTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   document.addEventListener('keydown', (e) => {
     if (e.target && e.target.tagName === 'SELECT') return;
     if (e.key === 'ArrowLeft' && current > 0) render(current - 1);
-    if (e.key === 'ArrowRight' && current < chapters.length - 1) render(current + 1);
+    if (e.key === 'ArrowRight' && current < books[lang].chapters.length - 1) render(current + 1);
   });
-  window.addEventListener('hashchange', () => render(parseHash(), true));
 
-  // ---------- 进度与头部状态 ----------
+  // ---------- 进度 ----------
   const onScroll = () => {
     const doc = document.documentElement;
     const max = doc.scrollHeight - window.innerHeight;
@@ -299,8 +409,29 @@ main{padding-top:68px}
   window.addEventListener('scroll', onScroll, { passive: true });
 
   // ---------- 初始化 ----------
-  render(parseHash(), true);
+  const parseHash = () => {
+    const m = location.hash.match(/^#(zh|en)-(\d+)$/);
+    if (m && has(m[1])) return { lang: m[1], i: parseInt(m[2], 10) - 1 };
+    const n = location.hash.match(/^#(\d+)$/);
+    if (n) return { lang: null, i: parseInt(n[1], 10) - 1 };
+    return { lang: null, i: 0 };
+  };
+  const init = parseHash();
+  if (init.lang && init.lang !== lang) lang = init.lang;
+  rebuildSelect();
+  updateSeg();
+  render(Math.max(0, init.i), true);
   onScroll();
+
+  window.addEventListener('hashchange', () => {
+    const h = parseHash();
+    if (h.lang && h.lang !== lang && has(h.lang)) {
+      lang = h.lang;
+      rebuildSelect();
+      updateSeg();
+    }
+    render(h.i, true);
+  });
 })();
 </script>
 </body>
